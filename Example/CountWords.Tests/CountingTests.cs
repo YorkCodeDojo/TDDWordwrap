@@ -7,6 +7,11 @@ namespace CountWords.Tests
     [TestClass]
     public class CountingTests
     {
+        // Simplest case
+        // Arrange / Act / Assert Pattern
+        // You don't need to use a test runner,  but it's a good idea!
+        // Create method
+
         [TestMethod]
         public void AnEmptyStringGivesNoWords()
         {
@@ -22,43 +27,59 @@ namespace CountWords.Tests
             Assert.AreEqual(expectedResult, actualResult);
         }
 
+        // Refactor - remove usings
 
-        //[TestMethod]
-        //public void AStringWithNoSpacesGivesOneWord()
-        //{
-        //    var service = new Counter();
-        //    var expectedResult = 1;
-        //    var input = "hello";
 
-        //    var actualResult = service.CountWords(input);
-        //    Assert.AreEqual(expectedResult, actualResult);
-        //}
+        [TestMethod]
+        public void AStringWithNoSpacesGivesOneWord()
+        {
+            var service = new Counter();
+            var expectedResult = 1;
+            var input = "hello";
 
-        //// Remove usings
+            var actualResult = service.CountWords(input);
+            Assert.AreEqual(expectedResult, actualResult);
+        }
 
-        //[TestMethod]
-        //public void AStringWithOneSpaceGivesTwoWords()
-        //{
-        //    var service = new Counter();
-        //    var expectedResult = 2;
-        //    var input = "hello world";
+        //////// Refactor - change to if/else
 
-        //    var actualResult = service.CountWords(input);
-        //    Assert.AreEqual(expectedResult, actualResult);
-        //}
 
-        ////Refactor - count spaces
+        [TestMethod]
+        public void AStringWithOneSpaceGivesTwoWords()
+        {
+            var service = new Counter();
+            var expectedResult = 2;
+            var input = "hello world";
 
-        //[TestMethod]
-        //public void AStringWithThreeWordsWithExtraSpacesStillGivesThree()
-        //{
-        //    var service = new Counter();
-        //    var expectedResult = 3;
-        //    var input = "hello from  York";
+            var actualResult = service.CountWords(input);
+            Assert.AreEqual(expectedResult, actualResult);
+        }
 
-        //    var actualResult = service.CountWords(input);
-        //    Assert.AreEqual(expectedResult, actualResult);
-        //}
 
+
+        //////////Refactor - count spaces
+
+        [TestMethod]
+        public void AStringWithThreeWordsWithExtraSpacesStillGivesThree()
+        {
+            var service = new Counter();
+            var expectedResult = 3;
+            var input = "hello from  York";
+
+            var actualResult = service.CountWords(input);
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+
+        [TestMethod]
+        public void AStringWithThreeWordsSeperatedBySemiColonsGivesThree()
+        {
+           var service = new Counter();
+           var expectedResult = 3;
+           var input = "hello;from;York";
+
+           var actualResult = service.CountWords(input);
+           Assert.AreEqual(expectedResult, actualResult);
+        }
     }
 }
